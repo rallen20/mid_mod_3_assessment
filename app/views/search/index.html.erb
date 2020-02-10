@@ -1,0 +1,11 @@
+<h1>House <%= @search_results.house %></h1>
+
+<h3>Order of the Phoenix Members -- (<%= @search_results.member_count %> total)</h3>
+<% @search_results.members.each do |member| %>
+  <ul class='member'>
+    <li class='name'>Name: <%= member.name %></li>
+    <li class='role'>Role: <%= member.role %></li>
+    <li class='house'>House: <%= member.house %></li>
+    <li class='patronus'>Patronus: <%= member.patronus %></li>
+  </ul>
+<% end %>
