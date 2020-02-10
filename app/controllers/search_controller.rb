@@ -1,12 +1,9 @@
 class SearchController < ApplicationController
   def index
-    # params["house"] returns string of search parameter
     house = params['house']
-
-    response = Faraday.get "https://www.potterapi.com/v1/characters?house=#{house}&key=#{ENV['POTTER_API_KEY']}&orderOfThePhoenix=true"
-
-    response_body = JSON.parse(response.body, symbolize_names: true)
-    require "pry"; binding.pry
+    render locals: {
+      search_results: HouseMembersFacade.new(house)
+    }
   end
 
  #  {:_id=>"5a0fa7dcae5bc100213c2338",
